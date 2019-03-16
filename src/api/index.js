@@ -8,11 +8,12 @@ axios.interceptors.response.use(function (res) {
 })
 
 
-export const getVideo = params => {
+export const apiGetVideo = params => {
   return axios.get("https://api.imjad.cn/cloudmusic/", {
     params: {
       "type": params["type"],
       "id": params['id']
+
     }
   })
 }

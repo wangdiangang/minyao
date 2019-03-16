@@ -3,13 +3,14 @@
     <i class="iconfanhui" v-if="back" @click="goback">返回</i>
     <span class="sousuo" v-if="search" @click="searchSong" v-show="!inputFlag"><i class="iconfont icon-sousuo " ></i></span>
     这是头部
-    <input type="text" placeholder="房东的猫||旅行的意义||盗将行||成都" class="input" v-if="inputFlag" @keyup.enter="add" @blur="add2"
-           v-model="songValue">
+    <input type="text" placeholder="只能输入以下歌曲" class="input" v-if="inputFlag" @keyup.enter="add" @blur="add2" autofocus v-model="songValue">
+           <!--autofocus自动获取焦点-->
+
   </header>
 </template>
 
 <script>
-  import {getVideo} from "../api/index"
+  import {apiGetVideo} from "../api/index"
 
   export default {
     name: "",
@@ -34,7 +35,7 @@
             "type": "mv",
             "id": "10798236"
           },
-          "盗将行": {
+          "平凡之路": {
             "type": "mv",
             "id": "290244"
           },
@@ -54,7 +55,7 @@
         this.inputFlag = false;
         for (let v in this.videos) {
           if (v == this.songValue) {
-            getVideo({
+            apiGetVideo({
               "type": this.videos[v]["type"],
               "id": this.videos[v]["id"]
             }).then(res => {
@@ -70,15 +71,7 @@
       }
 
     },
-    created() {
-      // console.log(this.$store.state.videos[0]);
-      // console.log(this.$store.state.videos[1]);
-      // console.log(this.$store.state.videos[2]);
-      // console.log(this.$store.state.videos[3]);
-      // console.log(this.$store.state.videos[4]);
-      // console.log(this.$store.state.videos[5]);
 
-    }
   }
 </script>
 

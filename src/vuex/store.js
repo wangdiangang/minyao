@@ -25,6 +25,10 @@ const state = {
       "type": "mv",
       "id": "290244"
     },
+    "断桥残雪": {
+      "type": "mv",
+      "id": "5436128 "
+    },
   }
 }
 const mutations = {

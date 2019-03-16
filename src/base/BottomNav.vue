@@ -10,10 +10,12 @@
       <i class="iconfont icon-duorenhuiyi"></i>
       <span>歌手</span>
     </router-link>
+
     <router-link to="/videos">
       <i class="iconfont icon-shipin"></i>
       <span>视频</span>
     </router-link>
+
     <router-link to="/mine">
       <i class="iconfont icon-geren3"></i>
       <span>我的</span>

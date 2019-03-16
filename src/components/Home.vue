@@ -9,7 +9,7 @@
     <div class="line"></div>
     <div class="ps">PS:搜索框里面内容直接到
       <router-link to="videos">视频</router-link>
-      内容里面
+      内容里面，跨域访问网易云音乐的https://api.imjad.cn/cloudmusic/地址，有的视频服务器已经403拒绝响应了。
     </div>
   </div>
 </template>

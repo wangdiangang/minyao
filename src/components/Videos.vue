@@ -4,7 +4,7 @@
     <Header @addVideoFn="addVideoFn"></Header>
     <ol>
       <li class="videoBox" v-for="(item,index) in getVideos" :key="index">
-        <video :src="item.brs[720]" class="video" preload controls></video>
+        <video :src="item.brs[1080]||item.brs[720]||item.brs[480]" class="video" preload controls></video>
         <span class="desc">{{item.desc||"默认描述文字"}}</span> <span>00:00</span>
         <span>作者:{{item.artistName}}</span> <span>留言版</span>
       </li>
@@ -17,7 +17,7 @@
   import Header from "../base/Header"
   import {getVideo} from "../api/index"
   import {mapGetters} from "vuex"
-
+import {apiGetVideo} from "../api/index"
   export default {
     computed: {
       ...mapGetters([
@@ -35,7 +35,21 @@
     methods: {
       addVideoFn(video) {
         this.videos.push(video)
+      },
+      test(){
+        // console.log(document.documentElement.scrollTop);
       }
+    },
+    created() {
+      this.test()
+      window.addEventListener("scroll",this.test)
+      apiGetVideo({
+        "type": "mv",
+        "id": "5436128"
+      }).then(res => {
+        console.log(res);
+        this.getVideos.push(res)
+      })
     },
     mounted() {
 
@@ -92,7 +106,8 @@
     overflow: hidden;
     height: .3rem;
   }
-  ol{
+
+  ol {
     margin-bottom: 2.3rem;
   }
 </style>
