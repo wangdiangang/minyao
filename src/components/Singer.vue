@@ -2,10 +2,11 @@
   <div>
     <Header :back="goback"></Header>
     <div class="singLove">
-      <span to="/singerPaihang">排行榜</span>
-      <span>每日推荐</span>
-      <span>私人收藏</span>
-      <span>我的喜爱</span>
+      <router-link to="/singerPaihang">排行榜</router-link>
+      <router-link to="/singerPaihang">我的所爱</router-link>
+      <router-link to="/singerPaihang">这是啥啊</router-link>
+      <router-link to="/singerPaihang">先搞出来</router-link>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -35,7 +36,7 @@
   height: 1rem;
   background: #888384;
 }
-  .singLove span{
+  .singLove a{
     font-size:.4em;
     color: #f9ffe2;
   }

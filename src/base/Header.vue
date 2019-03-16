@@ -34,6 +34,10 @@
             "type": "mv",
             "id": "10798236"
           },
+          "盗将行": {
+            "type": "mv",
+            "id": "290244"
+          },
         }
       }
 
@@ -58,9 +62,11 @@
             })
           }
         }
+        this.songValue=""
       },
       add2(){
         this.inputFlag = false;
+        this.songValue=""
       }
 
     },

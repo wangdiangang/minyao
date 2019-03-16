@@ -92,4 +92,7 @@
     overflow: hidden;
     height: .3rem;
   }
+  ol{
+    margin-bottom: 2.3rem;
+  }
 </style>
