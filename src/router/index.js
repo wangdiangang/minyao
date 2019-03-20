@@ -13,6 +13,7 @@ export default new Router({
   routes: [
     {path: '/home', name: 'home', component: Home,meta:{keepAlive:true}},
     {path: '*', name: 'home', component: Home},
+    {path: '/', name: 'home', component: Home},
     {
       path: "/singer", name: "singer", component: Singer,meta:{keepAlive:true}, children: [
         {path:"/singerPaihang",component:SingerPaihang}

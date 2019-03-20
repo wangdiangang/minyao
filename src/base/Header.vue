@@ -1,16 +1,19 @@
 <template>
   <header class="header">
     <i class="iconfanhui" v-if="back" @click="goback">返回</i>
-    <span class="sousuo" v-if="search" @click="searchSong" v-show="!inputFlag"><i class="iconfont icon-sousuo " ></i></span>
+    <span class="sousuo" v-if="search" @click="searchSong" v-show="!inputFlag"><i
+      class="iconfont icon-sousuo "></i></span>
     这是头部
-    <input type="text" placeholder="只能输入以下歌曲" class="input" v-if="inputFlag" @keyup.enter="add" @blur="add2" autofocus v-model="songValue">
-           <!--autofocus自动获取焦点-->
+    <input type="text" placeholder="只能输入以下歌曲" class="input" v-if="inputFlag" @keyup.enter="add" @blur="add2" autofocus
+           v-model="songValue">
+    <!--autofocus自动获取焦点-->
 
   </header>
 </template>
 
 <script>
   import {apiGetVideo} from "../api/index"
+  import {mapGetters} from "vuex"
 
   export default {
     name: "",
@@ -18,30 +21,16 @@
       return {
         inputFlag: false,
         songValue: "",
-        videos: {
-          "房东的猫": {
-            "type": "mv",
-            "id": "5686040"
-          },
-          "旅行的意义": {
-            "type": "mv",
-            "id": "5293224"
-          },
-          "成都": {
-            "type": "mv",
-            "id": "5619601"
-          },
-          "盗将行": {
-            "type": "mv",
-            "id": "10798236"
-          },
-          "平凡之路": {
-            "type": "mv",
-            "id": "290244"
-          },
-        }
       }
 
+    },
+    computed: {
+      ...mapGetters([
+        "getServerVideos"
+      ])
+    },
+    created() {
+      // console.log(this.getServerVideos);
     },
     props: ['back', "search"],
     methods: {
@@ -53,21 +42,21 @@
       },
       add() {
         this.inputFlag = false;
-        for (let v in this.videos) {
+        for (let v in this.getServerVideos) {
           if (v == this.songValue) {
             apiGetVideo({
-              "type": this.videos[v]["type"],
-              "id": this.videos[v]["id"]
+              "type": this.getServerVideos[v]["type"],
+              "id": this.getServerVideos[v]["id"]
             }).then(res => {
-              this.$store.commit("ADDVIDEOS",res)
+              this.$store.commit("ADDVIDEOS", res)
             })
           }
         }
-        this.songValue=""
+        this.songValue = ""
       },
-      add2(){
+      add2() {
         this.inputFlag = false;
-        this.songValue=""
+        this.songValue = ""
       }
 
     },

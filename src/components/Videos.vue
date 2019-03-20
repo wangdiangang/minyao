@@ -17,7 +17,8 @@
   import Header from "../base/Header"
   import {getVideo} from "../api/index"
   import {mapGetters} from "vuex"
-import {apiGetVideo} from "../api/index"
+  import {apiGetVideo} from "../api/index"
+
   export default {
     computed: {
       ...mapGetters([
@@ -36,18 +37,18 @@ import {apiGetVideo} from "../api/index"
       addVideoFn(video) {
         this.videos.push(video)
       },
-      test(){
+      test() {
         // console.log(document.documentElement.scrollTop);
       }
     },
     created() {
       this.test()
-      window.addEventListener("scroll",this.test)
+      window.addEventListener("scroll", this.test)
       apiGetVideo({
         "type": "mv",
-        "id": "5436128"
+        "id": "5563801"
       }).then(res => {
-        console.log(res);
+        console.log(res.duration);
         this.getVideos.push(res)
       })
     },

@@ -18,3 +18,12 @@ export const apiGetVideo = params => {
   })
 }
 
+export const apiGetAudio = params => {
+  return axios.get("https://api.imjad.cn/cloudmusic/", {
+    params: {
+      "type": params["type"],
+      "id": params['id']
+
+    }
+  })
+}

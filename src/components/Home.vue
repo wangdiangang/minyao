@@ -17,6 +17,7 @@
 <script>
   import Header from "../base/Header"
   import {mapGetters} from "vuex"
+  import {apiGetAudio} from "../api/index"
 
   export default {
     data() {
@@ -31,7 +32,12 @@
       ])
     },
     created() {
+      apiGetAudio({
+        "type": "song",
+        "id": "5556383"
+      }).then(res => {
 
+      })
 
     },
     methods: {},
